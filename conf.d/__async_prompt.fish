@@ -52,10 +52,11 @@ function __async_prompt_fire --on-event fish_prompt (for var in $async_prompt_on
     set -l __async_prompt_last_pipestatus $pipestatus
 
     for func in (__async_prompt_config_functions)
-        __async_prompt_log "__async_prompt_fire" "Processing function: $func"
+        __async_prompt_log "__async_prompt_fire" "Generating async prompt for function: $func"
         set -l tmpfile $__async_prompt_tmpdir'/'$fish_pid'_'$func
 
         if functions -q $func'_loading_indicator' && test -e $tmpfile
+            __async_prompt_log "__async_prompt_fire" "Generating loading indicator for function: $func"
             read -zl last_prompt <$tmpfile
             eval (string escape -- $func'_loading_indicator' "$last_prompt") >$tmpfile
         end
@@ -86,6 +87,9 @@ function __async_prompt_spawn -a cmd
             end
         end
     end | read -lz vars
+
+    __async_prompt_log "__async_prompt_spawn" "Got vars: $vars"
+
     echo $vars | env $envs fish -c '
     function __async_prompt_signal
         kill -s "'(__async_prompt_config_internal_signal)'" '$fish_pid' 2>/dev/null
