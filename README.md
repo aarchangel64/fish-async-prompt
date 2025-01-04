@@ -2,6 +2,18 @@
 
 Make your prompt asynchronous in [Fish](https://fishshell.com/).
 
+## About this fork
+
+This is a fork of [@acomagu's `fish-async-prompt` plugin](https://github.com/acomagu/fish-async-prompt).
+
+The following improvements have been made:
+
+- Make sure the correct status of the last command is passed to the prompt
+- Use command builtins for `cat` and `rm` to ensure aliases don't interfere with the prompt
+- Create a backup of the original `fish_prompt` and `fish_right_prompt` functions so that they can be used by other plugins, such as [my refresh-prompt-on-cmd](https://github.com/infused-kim/fish-refresh-prompt-on-cmd)
+- Add debug logging functions to make it easier to debug and understand how the plugin works (disabled by default)
+- Add detailed comments that explain how all parts of the plugin work
+
 ## Description
 
 ![Demo Video](./images/demo.png)
