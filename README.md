@@ -14,6 +14,8 @@ The following improvements have been made:
 - Add debug logging functions to make it easier to debug and understand how the plugin works (disabled by default)
 - Add detailed comments that explain how all parts of the plugin work
 
+This fork required to make `fish-async-prompt` compatible with [my fish-refresh-prompt-on-cmd](https://github.com/infused-kim/fish-refresh-prompt-on-cmd) plugin until my [PR #86 is merged into acomagu/fish-async-prompt](https://github.com/acomagu/fish-async-prompt/pull/86).
+
 ## Description
 
 ![Demo Video](./images/demo.png)
