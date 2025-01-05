@@ -172,7 +172,7 @@ function __async_prompt_spawn -a cmd
     #   - Runs the command in the background process
     #   - Sends a `SIGUSR1` signal to the parent process when the command is
     #     done
-    echo $vars | env $envs fish -c '
+    echo $vars | command env $envs fish -c '
     function __async_prompt_signal
         kill -s "'(__async_prompt_config_internal_signal)'" '$fish_pid' 2>/dev/null
     end
